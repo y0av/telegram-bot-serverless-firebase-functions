@@ -1,5 +1,5 @@
 
-# host a telegram bot on firebase
+# Host a telegram bot on firebase functions
 
 lots of the articles I found on this topic dont do it properly and the instace shuts down after several minutes and the bot dies with it.
 this is a working serverless telegram bot hosted on firebase functions.
@@ -16,8 +16,9 @@ this is a working serverless telegram bot hosted on firebase functions.
 ## Setup
 
 ### clone repo
+star this repo ⭐
 ```
-git clone 
+git clone https://github.com/y0av/telegram-bot-serverless-firebase-functions.git
 ```
 
 ### BotFather
@@ -35,12 +36,15 @@ BOT_TOKEN=<bot token from BotFather>
 upgrade your project to Blaze plan using a google billing account
 
 in your project folder
+copy the ```firebase.json``` file aside 
 ```
 firebase init
 ```
 - initialize firebase functions
 - choose existing project
-- select TypeScript
+- dont recreate package.json file
+then move back the ```firebase.json``` file instead of the one created by firebase init cmd
+
 
 #### deploy to firebase
 
@@ -59,6 +63,8 @@ cd ..
 cd ..
 firebase deploy
 ```
+when the deploy is successful, you will get a link to the newly created function.
+copy this link
 
 ### Set bot's webhook url
 now you need to tell telegram that your bot is using a webhook.

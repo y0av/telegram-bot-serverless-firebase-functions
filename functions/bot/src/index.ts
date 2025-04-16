@@ -25,7 +25,7 @@ exports.botfunction = onRequest(async (request, response) => {
           text: "Current time: " + timeString,
         });
       } else {
-        const message = "⚠️ Sorry, `\"" + text + "\"` is not a" +
+        const message = "⚠️ Sorry, \"" + text + "\" is not a" +
                 " recognized command.";
         await bot.sendMessage({
           chat_id: id,
