@@ -74,3 +74,14 @@ you can do it using curl like so:
 ```
 curl -X POST https://api.telegram.org/bot<YOUR BOT TOKEN>/setWebhook -H "Content-type: application/json" -d '{"url": "<YOUR FUNCTION URL>"}'
 ```
+but for accessing this function from the actual telegram bot you will have to set the function security to public accesss 
+from the [cloud run section in google cloud console](https://console.cloud.google.com/run?deploymentType=function) select your bot function and then go to security tab and select public access
+so if your bot code require private access only and you want to restrict only your bot to be able to access this function you will need to secure it at the application layer.
+telegram allows setting a secret token for the webhook so instead of the curl command above we can do:
+```
+curl -X POST https://api.telegram.org/bot<YOUR BOT TOKEN>/setWebhook -H "Content-type: application/json" -d '{"url": "<YOUR FUNCTION URL>","secret_token":"<your-64-char-secret>"}'
+```
+you can use any 64 char secret. an exaple way to produce one easily is:
+```
+ode -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+```
